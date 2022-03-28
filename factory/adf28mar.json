@@ -1,0 +1,9 @@
+{
+	"name": "adf28mar",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "a08f64de-aafd-4564-bc3b-3096b33073ca",
+		"tenantId": "e0793d39-0939-496d-b129-198edd916feb"
+	}
+}

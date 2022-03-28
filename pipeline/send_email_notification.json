@@ -1,0 +1,45 @@
+{
+	"name": "send_email_notification",
+	"properties": {
+		"activities": [
+			{
+				"name": "Send email on failure",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://prod-21.northcentralus.logic.azure.com:443/workflows/e6bdaf58fda641549ae70ba2db292370/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=NISjQb6cC9jTXjITORSvs6agEe2kKrIxASaNGvdgNxg",
+					"method": "POST",
+					"headers": {
+						"Content-Type": "application/json"
+					},
+					"body": {
+						"EmailTo": "@{pipeline().parameters.EmailTo}",
+						"Subject": "Pipeline @{pipeline().Pipeline}-Passed",
+						"DataFactoryName": "@{pipeline().DataFactory}",
+						"PipelineName": "@{pipeline().Pipeline}",
+						"Activity": "@{pipeline().parameters.Activity}"
+					}
+				}
+			}
+		],
+		"parameters": {
+			"EmailTo": {
+				"type": "string"
+			},
+			"Activity": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2022-03-28T16:44:00Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
